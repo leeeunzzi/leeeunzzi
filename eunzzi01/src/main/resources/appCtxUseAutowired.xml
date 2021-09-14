@@ -11,7 +11,14 @@
 	<!-- annotation을 쓰기 위함을 명시 -->
 	<context:annotation-config/>
 
-	<bean id="wordDao" class="com.word.dao.WordDao" />
+	<!-- 동일한 객체 3개이므로 의존 객체를 선택해줘야 함 -->
+	<bean id="wordDao1" class="com.word.dao.WordDao" >
+		<!-- qualifier 태그로 의존 객체를 선택-->
+		<qualifier value="usedDao" />
+	</bean>
+	
+	<bean id="wordDao2" class="com.word.dao.WordDao" />
+	<bean id="wordDao3" class="com.word.dao.WordDao" />
 	
 	<bean id="registerService" class="com.word.service.WordRegisterService">
 		<!-- Autowired 사용을 위한 주석처리 -->
