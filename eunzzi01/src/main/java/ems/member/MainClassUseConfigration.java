@@ -6,9 +6,10 @@ import java.util.Scanner;
 import java.util.Set;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
-import ems.member.configration.MemberConfig;
+import ems.member.configration.MemberConfig1;
+import ems.member.configration.MemberConfig2;
+import ems.member.configration.MemberConfig3;
 import ems.member.service.EMSInformationService;
 import ems.member.service.StudentAllSelectService;
 import ems.member.service.StudentModifyService;
@@ -42,8 +43,20 @@ public class MainClassUseConfigration {
 		 */
 
 		// MemeberCofig.java 파일을 이용
-		AnnotationConfigApplicationContext ctx = 
-				new AnnotationConfigApplicationContext(MemberConfig.class);
+		/*
+		 * AnnotationConfigApplicationContext ctx = new
+		 * AnnotationConfigApplicationContext(MemberConfig.class);
+		 */
+
+		// java cofig 파일 분리
+		/*
+		 * AnnotationConfigApplicationContext ctx = new
+		 * AnnotationConfigApplicationContext(MemberConfig1.class, MemberConfig2.class,
+		 * MemberConfig3.class);
+		 */
+
+		// MemberCofig1에서 MemberConfig2랑 MemberConfig3 @Import 하기
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MemberConfig1.class);
 
 		EMSInformationService informationService = ctx.getBean("informationService", EMSInformationService.class);
 		informationService.outputEMSInformation();
